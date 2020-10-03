@@ -51,8 +51,8 @@ end
 %%
 
 resampleCurveOpt=0;
-interpMethod='natural'; %or 'natural'
-
+interpMethod='linear'; %or 'natural'
+cFigure
 FT={Fc};
 VT={Vc};
 for q=1:1:size(G,2)
@@ -62,7 +62,7 @@ for q=1:1:size(G,2)
     
     Vt=Vc(indBoundaryNow,:);
     
-%     plotV(Vt,'y-','LineWidth',5);
+     plotV(Vt,'y-','LineWidth',5);
     
     if ~isempty(pointSpacing)
         regionCell={Vt};
@@ -99,10 +99,10 @@ for q=1:1:size(G,2)
     if dot(N_now_fit,N_now)<0
         Fh=fliplr(Fh);
     end
-     
-%     gpatch(Fh,Vh,'g','k',1);
-%     patchNormPlot(Fh,Vh);
-%     drawnow;
+     hold on
+     gpatch(Fh,Vh,'g','k',1);
+     patchNormPlot(Fh,Vh);
+     drawnow;
     
     FT{end+1}=Fh;
     VT{end+1}=Vh;
